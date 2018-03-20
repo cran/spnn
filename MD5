@@ -1,11 +1,11 @@
-cfffd05d0b2a18162f9a8425d5bbb637 *DESCRIPTION
+7dcb280d5131431c9511e133a22842fb *DESCRIPTION
 4275d318cfb03d565057859aac180082 *NAMESPACE
 8f760cabf251ac3eb7958f7590c50de9 *R/pnn.guess.R
-c2e8b3a809226428e203001ba02b2b89 *R/pnn.learn.R
-632f206784db4a5aafd282c46a4860f4 *R/spnn-internal.R
-b8fdb325febe787315fc75229529a5c0 *build/partial.rdb
+c35eee1cc3f43c62c966b91d39fe026b *R/pnn.learn.R
+ffa0dae0ecf63815d783036cdfd1b6f9 *R/spnn-internal.R
+f0a17676aca902c51167c675ffa3fc7f *build/partial.rdb
 9b07b93d4e142e3103b8474d3d4c90d9 *data/norms.rda
 ffa894443b7beeecdcd65a92dbcf6ba8 *man/norms.Rd
 515e4d3f343e9b4b9b98e86fd409e887 *man/pnn.guess.Rd
-bca0d537b2b932d995435da1fbbf4232 *man/pnn.learn.Rd
+dc87fb73d225934461a6d8ec333b306b *man/pnn.learn.Rd
 10e5b9d92537cb77d538ed8fac199f11 *man/spnn-package.Rd

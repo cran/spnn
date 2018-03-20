@@ -28,7 +28,9 @@ An n by n square matrix of smoothing parameters where n is the number of input f
 }
   \item{alpha}{
 %%     ~~Describe \code{alpha} here~~
-An n by n square matrix of alpha smoothing multipliers where n is the number of input factors. This is meant to be utilized if a custom optimization method is used for selecting elements of alpha. In this special case, the smoothing parameter matrix sigma is decomposed to the kronecker product of the alpha smoothing matrix and the default covariance matrix.
+An n by n square matrix of alpha smoothing multipliers where n is the number of input factors. This is meant to be utilized if a custom optimization method is used for selecting elements of alpha. In this special case, the smoothing parameter matrix sigma is decomposed to the Hadamard product (element-wise product) of the alpha smoothing matrix and the default covariance matrix.
+
+For more information on using a custom smoothing matrix, see references in \link{spnn-package}.
 }
   \item{category.column}{
 %%     ~~Describe \code{category.column} here~~

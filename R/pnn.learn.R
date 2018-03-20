@@ -1,5 +1,4 @@
-pnn.learn <-
-function(set, # training data set
+pnn.learn <- function(set, # training data set
                       nn, # trained probabilistic neural network (optional)
                       sigma, # input covariance matrix (optional)
                       alpha, # input smoothing matrix (optional, defaults to 1)
@@ -16,10 +15,9 @@ function(set, # training data set
   }
   
   if(missing(alpha)){ alpha <- 1 }
-  if(missing(sigma)){ nn$sigma <- alpha*cov(nn$set[,-nn$category.column]) }
+  if(missing(sigma)){ nn$sigma <- cov(nn$set[,-nn$category.column]) }
   
-  nn$set[,nn$category.column] <- factor(nn$set[,nn$category.column])
-  nn$categories <- levels(nn$set[,nn$category.column])
+  nn$categories <- levels(factor(nn$set[,nn$category.column]))
   nn$alpha <- alpha
   nn$k <- length(nn$set[1,]) - 1
   nn$n <- length(nn$set[,1])
