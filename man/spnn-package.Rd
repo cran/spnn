@@ -9,11 +9,13 @@
 \packageDescription{spnn}
 }
 \details{
-The package exports 2 main functions:
+The package exports 4 main functions:
 
 \itemize{
-\item{\link{pnn.learn}}{ Create or update a Scale Invariant Probabilistic Neural Network.}
-\item{\link{pnn.guess}}{ Estimates the category probabilities of a new observation.}
+\item{\link{spnn.learn}}{ Create or update a Scale Invariant Probabilistic Neural Network. }
+\item{\link{spnn.predict}}{ Estimates the category probabilities of new observations using a fitted SPNN. }
+\item{\link{cspnn.learn}}{ Create or update a Condensed Scale Invariant Probabilistic Neural Network. }
+\item{\link{cspnn.predict}}{ Estimates the category probabilities of new observations using a fitted CSPNN. }
 }
 }
 \author{
@@ -24,9 +26,7 @@ The package exports 2 main functions:
 
 [2] Specht, Donald F. "Enhancements to probabilistic neural networks." Neural Networks, 1992.IJCNN., International Joint Conference on. Vol. 1. IEEE, 1992.
 
-[3] \url{http://texasquant.blogspot.com/2018/01/scale-invariant-probabilistic-neural.html}
-
-[4] Ebrahimi, Romin "Scale Invariant Probabilistic Neural Networks." Working Paper, 2018
+[3] Ebrahimi, Romin "Scale Invariant Probabilistic Neural Networks." The University of Texas, 2018 \url{https://repositories.lib.utexas.edu/handle/2152/65166}
 }
 \keyword{spnn}
 \keyword{neural}
@@ -34,14 +34,44 @@ The package exports 2 main functions:
 \keyword{probability}
 \keyword{pnn}
 \seealso{
-\code{\link{pnn.learn}}, \code{\link{pnn.guess}}, \code{\link{norms}}
+\code{\link{spnn.learn}},
+\code{\link{spnn.predict}},
+\code{\link{cspnn.learn}},
+\code{\link{cspnn.predict}}
 }
 \examples{
 library(spnn)
-data(norms)
+library(datasets)
 
-pnn <- pnn.learn(norms)
-pnn.guess(pnn, c(1,1))
-pnn.guess(pnn, c(2,1))
-pnn.guess(pnn, c(1.5,1))
+data(iris)
+
+# shuffle the iris data set
+indexRandom <- sample(1:nrow(iris), size = nrow(iris), replace = FALSE)
+
+# use 100 observations for training set
+trainData <- iris[indexRandom[1:100],]
+
+# use remaining observations for testing
+testData <- iris[indexRandom[101:length(indexRandom)],]
+
+# fit spnn
+spnn <- spnn.learn(set = trainData, category.column = 5)
+
+# estimate probabilities
+predictions <- spnn.predict(nn = spnn, newData = testData[,1:4])
+
+# reference matrix must be supplied
+xr <- matrix(c(c(5.00, 3.41, 1.44, 0.24),
+               c(5.88, 2.75, 4.23, 1.30),
+               c(6.61, 2.97, 5.59, 2.01)),
+             nrow = length(unique(trainData$Species)),
+             ncol = ncol(trainData) - 1,
+             byrow = TRUE) # this is not the optimal reference matrix
+
+# fit cspnn
+cspnn <- cspnn.learn(set = trainData, xr = xr, category.column = 5)
+
+# estimate probabilities
+predictions <- cspnn.predict(nn = cspnn, newData = testData[,1:4])
+
 }

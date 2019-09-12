@@ -1,2 +1,4 @@
-exportPattern("^[[:alpha:]]+")
+useDynLib(spnn, .registration=TRUE)
+importFrom("Rcpp", "evalCpp")
 importFrom("stats", "cov")
+exportPattern("^[[:alpha:]]+")
