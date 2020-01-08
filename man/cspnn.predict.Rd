@@ -54,12 +54,14 @@ trainData <- iris[indexRandom[1:100],]
 testData <- iris[indexRandom[101:length(indexRandom)],]
 
 # reference matrix must be supplied
+# this is not the optimal reference matrix
+# this matrix is provided as a simple example
 xr <- matrix(c(c(5.00, 3.41, 1.44, 0.24),
                c(5.88, 2.75, 4.23, 1.30),
                c(6.61, 2.97, 5.59, 2.01)),
              nrow = length(unique(trainData$Species)),
              ncol = ncol(trainData) - 1,
-             byrow = TRUE) # this is not the optimal reference matrix
+             byrow = TRUE)
 
 # fit cspnn
 cspnn <- cspnn.learn(set = trainData, xr = xr, category.column = 5)

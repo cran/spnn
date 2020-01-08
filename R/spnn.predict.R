@@ -16,6 +16,8 @@ spnn.predict <- function(nn,
                              newData = as.matrix(newData),
                              sigmaInverse = nn$sigmaInverse)
   
+  colnames(probs) <- nn$categories
+  
   categories <- sapply(max.col(m = probs, ties.method = "first"), function(x) nn$categories[x])
   
   results <- list(categories = categories, 
