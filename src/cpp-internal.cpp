@@ -16,7 +16,7 @@ arma::mat spnn_predict_cpp(arma::cube& setCube,
       
       arma::mat slice = setCube.slice(j); // subset slice for each class
       arma::uvec nan_cutoff_vec = arma::find_nonfinite(slice.col(0));
-      int nan_cutoff = arma::conv_to<int>::from(nan_cutoff_vec.head(1));
+      int nan_cutoff = arma::as_scalar(nan_cutoff_vec.head(1));
       slice = slice.submat(0, 0, nan_cutoff - 1, slice.n_cols - 1); // cut off row where NaNs begin
       
       double f; // scale invariant estimate

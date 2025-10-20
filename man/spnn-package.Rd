@@ -12,10 +12,10 @@
 The package exports 4 main functions:
 
 \itemize{
-\item{\link{spnn.learn}}{ Create or update a Scale Invariant Probabilistic Neural Network. }
-\item{\link{spnn.predict}}{ Estimates the category probabilities of new observations using a fitted SPNN. }
-\item{\link{cspnn.learn}}{ Create or update a Condensed Scale Invariant Probabilistic Neural Network. }
-\item{\link{cspnn.predict}}{ Estimates the category probabilities of new observations using a fitted CSPNN. }
+\item{\link{spnn.learn}: Create or update a Scale Invariant Probabilistic Neural Network.}
+\item{\link{spnn.predict}: Estimates the category probabilities of new observations using a fitted SPNN.}
+\item{\link{cspnn.learn}: Create or update a Condensed Scale Invariant Probabilistic Neural Network.}
+\item{\link{cspnn.predict}: Estimates the category probabilities of new observations using a fitted CSPNN.}
 }
 }
 \author{
